@@ -6,12 +6,12 @@ import { reduxFirestore, getFirestore } from 'redux-firestore';
 
 import rootReducer from './reducers';
 
-// react-redux-firebase config
-// const rrfConfig = {
-//   userProfile: 'users',
-//   useFirestoreForProfile: false, // Firestore for Profile instead of Realtime DB
-//   attachAuthIsReady: false, // attaches auth is ready promise to store
-// };
+//react-redux-firebase config
+const rrfConfig = {
+  userProfile: 'users',
+  useFirestoreForProfile: true, // Firestore for Profile instead of Realtime DB
+  attachAuthIsReady: true, // attaches auth is ready promise to store
+};
 
 const composeEnhancers =
   process.env.NODE_ENV === 'development'
@@ -21,7 +21,7 @@ const composeEnhancers =
 const store = createStore(
   rootReducer,
   composeEnhancers(
-    reactReduxFirebase(firebase/*, rrfConfig*/),
+    reactReduxFirebase(firebase, rrfConfig),
     reduxFirestore(firebase),
     applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore }))
   )
