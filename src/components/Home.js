@@ -1,14 +1,22 @@
 import React from 'react'
 import CreatePost from './CreatePost'
 import AllPosts from './AllPosts'
+import { connect } from 'react-redux'
 
-function Home(){
+function Home(props){
+    const { auth } = props
     return (
         <div>
-            <CreatePost />
+            {auth.uid ? <CreatePost /> : null}
             <AllPosts />
         </div>
     )
 }
 
-export default Home
+const mapStateToProps = (state) => {
+    return {
+        auth: state.firebase.auth
+    }
+}
+
+export default connect(mapStateToProps)(Home)
