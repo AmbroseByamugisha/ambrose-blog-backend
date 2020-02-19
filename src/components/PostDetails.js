@@ -7,7 +7,7 @@ import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
 const PostDetails = (props) => {
-    const {post, deletePost} = props
+    const {post, deletePost, auth} = props
     if(post){
     return (
         <div className="post">
@@ -15,7 +15,8 @@ const PostDetails = (props) => {
         <div key={post.id}>
           <h3>{post.title}</h3>
           <h5>{post.body}</h5>
-          <Link className='secondary-content' to='/' onClick={ () => deletePost(post.id) }>
+          {auth.uid ? <div>
+            <Link className='secondary-content' to='/' onClick={ () => deletePost(post.id) }>
 							<i className='material-icons delete'>delete</i>
 						</Link>
             <Link className='secondary-content' to={{
@@ -23,12 +24,14 @@ const PostDetails = (props) => {
               state: {postId: post.id}
             }}>
             <i className='material-icons edit'>edit</i>
-            </Link>        
+            </Link>
+          </div>: null}
           </div> 
         ))
           }
         </div>
-    )}else {
+    )} 
+    else {
       return(
         <Redirect
           to={{
@@ -51,7 +54,8 @@ const mapStateToProps = (state, ownProps) => {
     const post = posts ? posts.filter(post=>post.id===id) : null
     return {
       post_id: id,
-      post: post
+      post: post,
+      auth: state.firebase.auth
     }
   }
 
