@@ -21,7 +21,6 @@ const useStyles = makeStyles(theme => ({
 // USE CLASSES TO setState if need be
 const PostSummary = (post) => {
     const classes = useStyles()
-    
     const truncateString = (str, num) => {
         // If the length of str is less than or equal to num
         // just return str--don't truncate it.
