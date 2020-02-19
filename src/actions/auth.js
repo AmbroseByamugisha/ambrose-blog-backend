@@ -30,3 +30,27 @@ export const signUp = data => async (
     }
     dispatch({ type: actions.AUTH_END });
   };
+
+// Login action creator
+export const signIn = data => async (dispatch, getState, { getFirebase }) => {
+  const firebase = getFirebase();
+  dispatch({ type: actions.AUTH_START });
+  try {
+    await firebase.auth().signInWithEmailAndPassword(data.email, data.password);
+    dispatch({ type: actions.AUTH_SUCCESS });
+  } catch (err) {
+    dispatch({ type: actions.AUTH_FAIL, payload: err.message });
+  }
+  dispatch({ type: actions.AUTH_END });
+};
+
+// Logout action creator
+export const signOut = () => async (dispatch, getState, { getFirebase }) => {
+  const firebase = getFirebase();
+  try {
+    await firebase.auth().signOut();
+  } catch (err) {
+    console.log(err.message);
+  }
+};
+
