@@ -2,8 +2,8 @@ import React from 'react'
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
+import moment from 'moment'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -32,22 +32,24 @@ const PostSummary = (post) => {
       }
     return (
         <div className={classes.root}>
-      <Paper className={classes.paper}>
+        <Paper className={classes.paper}>
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
-            <Avatar>W</Avatar>
+            {/* <Avatar>W</Avatar> */}
           </Grid>
           <Grid item xs>
             <Typography component={'span'}>
+            
             <div key={post.id}>
-                <h3>{post.post.title}</h3>
-                {truncateString(post.post.body, 100)}
+                <h5 className="heading-title">{post.post.title}</h5>
+                <p>{truncateString(post.post.body, 100)}</p>
                 {console.log(post.post.date.seconds)}
+                <p className="grey-text">{moment(post.post.date.toDate()).calendar()}</p>
             </div>  
         </Typography>
           </Grid>
         </Grid>
-      </Paper>
+        </Paper>
     </div>
     )
 }
