@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { signIn } from '../actions'
 import { connect } from 'react-redux'
+import '../index.css'
 
 class Login extends Component {
     state = { email: "", password: ""}
@@ -28,8 +29,9 @@ class Login extends Component {
         render() {
             const { loginError, loading } = this.props;
             return(
-                <div>
-                <form>
+                <div className="login-form">
+                <form className="form-login">
+                <h3>Login here</h3>
                 <input onChange={this.handleEmailChange} placeholder="Enter your email"  name="title" />
                 <input onChange={this.handlePasswordChange} placeholder="Enter your password"  name="body" type="password" />
                 {loginError && (
