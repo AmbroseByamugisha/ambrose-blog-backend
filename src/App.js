@@ -18,7 +18,13 @@ function App(props) {
           <Route exact path="/" component={Home} />
           <Route path='/post/:id' component={PostDetails} />
           {/* <Route path='/update_post' component={EditPost} /> */}
-          <Route path='/signup' component={SignUp} />
+          {/* <Route path='/signup' component={SignUp} /> */}
+          <ProtectedRoute
+            exact
+            path="/signup"
+            component={SignUp}
+            authUID={authUID}
+          />
           <Route path='/login' component={Login} />
           <ProtectedRoute
             exact
