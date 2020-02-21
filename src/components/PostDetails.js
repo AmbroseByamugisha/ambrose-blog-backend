@@ -5,12 +5,41 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { deletePost, editPost } from '../actions'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import Paper from '@material-ui/core/Paper';
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+    overflow: 'hidden',
+    padding: theme.spacing(0, 3),
+  },
+  paper: {
+    maxWidth: 900,
+    margin: `${theme.spacing(1)}px auto`,
+    padding: theme.spacing(2),
+  },
+}));
 
 const PostDetails = (props) => {
+    const classes = useStyles()
     const {post, deletePost, auth} = props
     if(post){
     return (
-        <div className="post">
+        
+        //
+        <div className={classes.root}>
+        <Paper className={classes.paper}>
+        <Grid container wrap="nowrap" spacing={2}>
+          <Grid item>
+            {/* <Avatar>W</Avatar> */}
+          </Grid>
+          <Grid item xs>
+            <Typography component={'span'}>
+            {/*start */}
+            <div className="post">
           {post.map((post) => (
         <div key={post.id}>
           <h3>{post.title}</h3>
@@ -29,7 +58,14 @@ const PostDetails = (props) => {
           </div> 
         ))
           }
-        </div>
+        </div>    
+            {/* end */} 
+        </Typography>
+          </Grid>
+        </Grid>
+        </Paper>
+    </div>
+        //
     )} 
     else {
       return(
