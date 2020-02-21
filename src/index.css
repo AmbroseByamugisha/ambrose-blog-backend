@@ -22,3 +22,28 @@ code {
   color: white;
   text-decoration: underline;
 }
+
+.login-form {
+  /* background-color: white;
+  text-align: center; */
+  
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form-login {
+  /* display: inline-block; */
+  /* background-color: white;
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); */
+  vertical-align: middle;
+  background-color: white;
+  width: 700px;
+  height: 300px;
+  border-radius: 10px;
+}
