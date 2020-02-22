@@ -32,8 +32,8 @@ class Login extends Component {
                 <div className="login-form">
                 <form className="form-login">
                 <h3>Login here</h3>
-                <input onChange={this.handleEmailChange} placeholder="Enter your email"  name="title" />
-                <input onChange={this.handlePasswordChange} placeholder="Enter your password"  name="body" type="password" />
+                <input onChange={this.handleEmailChange} placeholder="Enter your email"  name="title" className="validate" required />
+                <input onChange={this.handlePasswordChange} placeholder="Enter your password"  name="body" className="validate" type="password" required />
                 {loginError && (
                 <p>
                     Incorrect email or password.
@@ -44,7 +44,7 @@ class Login extends Component {
                     Loggin In...
                 </p>
                 )}
-                <button onClick={this.handleSubmit}>Submit</button>
+                <button onClick={this.handleSubmit} className="waves-effect waves-light btn">Login</button>
                 </form>
                 </div>
             )
