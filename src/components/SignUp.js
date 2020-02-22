@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { signUp } from '../actions'
 import { connect } from 'react-redux'
+import '../index.css'
 
 class SignUp extends Component {
     state = { firstName: "", lastName: "", email: "", password: ""}
@@ -35,12 +36,12 @@ class SignUp extends Component {
         render() {
             const { signupError, loading } = this.props;
             return(
-                <div>
-                <form>
-                <input onChange={this.handleFirstNameChange} placeholder="Enter your first name"  name="firstName" />
-                <input onChange={this.handleLastNameChange} placeholder="Enter your last name"  name="lastName" />
-                <input onChange={this.handleEmailChange} placeholder="Enter your email"  name="title" />
-                <input onChange={this.handlePasswordChange} placeholder="Enter your password"  name="body" type="password" />
+                <div className="login-form">
+                <form className="form-login">
+                <input onChange={this.handleFirstNameChange} placeholder="Enter your first name"  name="firstName" className="validate" required />
+                <input onChange={this.handleLastNameChange} placeholder="Enter your last name"  name="lastName" className="validate" required />
+                <input onChange={this.handleEmailChange} placeholder="Enter your email"  name="title" className="validate" required />
+                <input onChange={this.handlePasswordChange} placeholder="Enter your password"  name="body" type="password" className="validate" required />
                 {signupError && (
                 <p>
                     Incorrect email or password.
@@ -51,7 +52,7 @@ class SignUp extends Component {
                     Loading...
                 </p>
                 )}
-                <button onClick={this.handleSubmit}>Submit</button>
+                <button onClick={this.handleSubmit} className="waves-effect waves-light btn">Signup</button>
                 </form>
                 </div>
             )
