@@ -54,3 +54,5 @@ export const signOut = () => async (dispatch, getState, { getFirebase }) => {
   }
 };
 
+// CREATE AN ADMIN USER
+
