@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { signOut } from '../actions'
-import { NavLink } from 'react-router-dom'
 import '../index.css'
 
 const SignedInLinks = (props) => {
@@ -9,7 +8,6 @@ const SignedInLinks = (props) => {
     <div>
       <ul className="right">
         <li onClick={props.signOut} className="pointer">Log Out</li>
-        <li><NavLink to='/signup'>Create user</NavLink></li>
       </ul>
     </div>
   )
