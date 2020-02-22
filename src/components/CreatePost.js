@@ -27,8 +27,8 @@ class CreatePost extends Component {
             return(
                 <div>
                 <form>
-                <input onChange={this.handleTitleChange} placeholder="post title"  name="title" />
-                <textarea onChange={this.handleBodyChange} placeholder="What's on your mind"  name="body"></textarea>
+                <input onChange={this.handleTitleChange} placeholder="post title"  name="title" required />
+                <textarea onChange={this.handleBodyChange} placeholder="What's on your mind"  name="body" required></textarea>
                 <button onClick={this.handleSubmit}>Submit</button>
                 </form>
                 </div>
